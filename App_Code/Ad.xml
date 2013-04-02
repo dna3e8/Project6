@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<Advertisements>
+    <Ad>
+        <ImageUrl>~/Images/Products/c.png</ImageUrl>
+        <NavigateUrl>~/ProductStore.aspx?prod=5</NavigateUrl>
+            <AlternateText>
+                Cookies
+            </AlternateText>
+            <Impressions>1</Impressions>
+        </Ad>
+    <Ad>
+        <ImageUrl>~/Images/Products/candyland.png</ImageUrl>
+        <NavigateUrl>~/ProductStore.aspx?prod=6</NavigateUrl>
+        <AlternateText>
+            Candy land
+        </AlternateText>
+        <Impressions>5</Impressions>
+    </Ad>
+    <Ad>
+        <ImageUrl>~/Images/Products/c4.png</ImageUrl>
+        <NavigateUrl>~/ProductStore.aspx?prod=9</NavigateUrl>
+        <AlternateText>
+            Smooth
+        </AlternateText>
+        <Impressions>2</Impressions>
+    </Ad>
+    <Ad>
+        <ImageUrl>~/Images/Products/candy-sushi-3.png</ImageUrl>
+        <NavigateUrl>~/ProductStore.aspx?prod=13</NavigateUrl>
+        <AlternateText>
+            Blue Sushi
+        </AlternateText>
+        <Impressions>4</Impressions>
+    </Ad>
+
+</Advertisements>
