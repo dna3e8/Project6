@@ -13,10 +13,15 @@ public partial class MyAccount_Checkout : System.Web.UI.Page
     {
         SortedList cart;
         cart = (SortedList) Session["Cart"];
-
-        if (cart.Count < 1)
-            Response.Redirect("~\\ProductStore.aspx");
-
+        if (Session["Cart"] == null)
+        { 
+            Response.Redirect("~\\ProductStore.aspx"); 
+        }
+        else
+        {
+            if (cart.Count < 1)
+                Response.Redirect("~\\ProductStore.aspx");
+        }
         MembershipUser user = Membership.GetUser();
         string myUser = user.UserName;
 
