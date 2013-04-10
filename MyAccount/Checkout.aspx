@@ -15,7 +15,7 @@
                 <h2>
                     Select or add the Billing Address</h2>
                     <br />
-                <asp:ListView ID="AdressLV" runat="server" DataKeyNames="A_id" 
+                <asp:ListView ID="BillingLV" runat="server" DataKeyNames="A_id" 
                     DataSourceID="AddressSDS" InsertItemPosition="LastItem">
                     <AlternatingItemTemplate>
                         <td runat="server" style="background-color:#FFF8DC;">
@@ -181,7 +181,7 @@
                     Select or add the Shipping Billing Address</h2>
 
                     
-                <asp:ListView ID="ListView1" runat="server" DataKeyNames="A_id" 
+                <asp:ListView ID="ShippingLV" runat="server" DataKeyNames="A_id" 
                     DataSourceID="AddressSDS" InsertItemPosition="LastItem">
                     <AlternatingItemTemplate>
                         <td id="Td1" runat="server" style="background-color:#FFF8DC;">
@@ -348,13 +348,16 @@
             <asp:WizardStep runat="server" Title="Step 3:  Shipping Method">
             <h2>Select a Shipping Method</h2>
 
-                <asp:DropDownList ID="ShippingDDL" runat="server">
+                <asp:DropDownList ID="ShipMethodDDL" runat="server">
                     <asp:ListItem>USPS</asp:ListItem>
                     <asp:ListItem>FedEx</asp:ListItem>
                     <asp:ListItem>UPS</asp:ListItem>
                 </asp:DropDownList>
             </asp:WizardStep>
             <asp:WizardStep runat="server" StepType="Complete">
+            <h2>Thanks for shopping: </h2>
+                <asp:Label ID="ErrorMessageLBL" runat="server" Text=""></asp:Label>
+                <asp:Label ID="FinalMessageLBL" runat="server" Text=""></asp:Label>
             </asp:WizardStep>
         </WizardSteps>
     </asp:Wizard>

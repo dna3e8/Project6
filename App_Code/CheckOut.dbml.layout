@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CheckOut">
+  <DataContextMoniker Name="/CheckOutDataContext" />
+  <nestedChildShapes>
+    <classShape Id="60b93d30-adf3-4ce9-bbd5-a3c4ead9d654" absoluteBounds="4.625, 2.5, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/CheckOutDataContext/CS_Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e437fba-95c2-4dca-a8e8-5f011ad63196" absoluteBounds="4.64, 2.96, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="687d78ab-cc52-4da1-8882-145db3db1ca2" absoluteBounds="1.625, 2.875, 2, 1.4248478190104168">
+      <DataClassMoniker Name="/CheckOutDataContext/CS_OrderItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b1d3200-16c2-465b-b445-987a71214e6e" absoluteBounds="1.6400000000000001, 3.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.625 : 3.58742390950521); (3.625 : 3.58742390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CheckOutDataContext/CS_Order/CS_Order_CS_OrderItem" />
+      <nodes>
+        <classShapeMoniker Id="60b93d30-adf3-4ce9-bbd5-a3c4ead9d654" />
+        <classShapeMoniker Id="687d78ab-cc52-4da1-8882-145db3db1ca2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="INFO3420_01" Class="CheckOutDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=aa1;Initial Catalog=INFO3420_01;Persist Security Info=True;User ID=INFO3420" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="INFO3420_01Cust" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[CS.Order]" Member="CS_Orders">
+    <Type Name="CS_Order">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerUsername" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BillingAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShippingAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShippingType" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="CS_Order_CS_OrderItem" Member="CS_OrderItems" ThisKey="OrderID" OtherKey="OrderID" Type="CS_OrderItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[CS.OrderItem]" Member="CS_OrderItems">
+    <Type Name="CS_OrderItem">
+      <Column Name="OrderItemsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CS_Order_CS_OrderItem" Member="CS_Order" ThisKey="OrderID" OtherKey="OrderID" Type="CS_Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
