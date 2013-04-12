@@ -9,7 +9,8 @@
 
     <asp:Label ID="UsernameLBL" runat="server" Text="" Visible="true"></asp:Label>
     <asp:Wizard ID="CheckOutWZ" runat="server" DisplayCancelButton="True" 
-        OnCancelButtonClick="CheckOutWZ_CancelButtonClick" ActiveStepIndex="0">
+        OnCancelButtonClick="CheckOutWZ_CancelButtonClick" ActiveStepIndex="0"
+         onfinishbuttonclick="FinishButtonClick">
         <WizardSteps>
             <asp:WizardStep ID="WizardStep1" runat="server" Title="Step 1: Billing Address">
                 <h2>

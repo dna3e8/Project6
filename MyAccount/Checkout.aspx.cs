@@ -84,10 +84,35 @@ public partial class MyAccount_Checkout : System.Web.UI.Page
             return;
         }
 
+        //set up the Paypal URL Encoded strings for use in query string
+        // this is the email of the class Paypal business, 
+        // do not create a new business account, use this one
+        string strBusiness = Server.UrlEncode("UVU3420@hotmail.com");
+
+        // the strAppPath uses your VM number and the name of the application folder
+        //  in Project 6 this will be the Project6 folder, not PayPal
+        string strAppPath = "http://info3420-01.ad.uvu.edu/Project6/";
+
+        // Provide the name of your Confirmation form
+        string strCompleteURL = Server.UrlEncode(strAppPath + "Confirmation.aspx?");
+
+        //  Provide the name of your Cancel form
+        string strCancelURL = Server.UrlEncode(strAppPath + "Cancel.aspx?order=" + myorder.OrderID + "&status=cancelled");
+
+
+        //set up item variables for query string to PayPal and intialize to 0
+        int intCount = 0;
+
+        //set up static part of PayPal query string variable
+        string strPayPal = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=" +
+            strBusiness + "&return=" + strCompleteURL + "&cancel_return=" + strCancelURL;
+
         try
         {
             foreach (DictionaryEntry entry in cart)
             {
+
+                intCount++;
                 //Create a new OrderItem LINQ entity object.
                 CS_OrderItem orderitem = new CS_OrderItem();
                 // Get out the next cartitem.
@@ -100,6 +125,19 @@ public partial class MyAccount_Checkout : System.Web.UI.Page
                 ordertotal += cartitem.Quantity * cartitem.Product.Price;
                 checkout.CS_OrderItems.InsertOnSubmit(orderitem); // inserts into LINQ obj
                 checkout.SubmitChanges(); // pushes insert into database
+
+                /**************************************************************************/
+                // Place this code snippet inside but at the bottom of your foreach loop
+                // that creates OrderItems and sends them to the database
+                //this code adds the foreach loop item to query string for PayPal
+                strPayPal += "&item_number_" + intCount + "=" + intCount;
+                strPayPal += "&item_name_" + intCount + "=" + cartitem.Product.PName;
+                strPayPal += "&quantity_" + intCount + "=" + cartitem.Quantity;
+                strPayPal += "&amount_" + intCount + "=" + Decimal.Round(cartitem.Product.Price, 2);
+
+                /*************************************************************/
+
+
             } // end foreach
         }// end try
         catch (Exception ex)
@@ -108,9 +146,17 @@ public partial class MyAccount_Checkout : System.Web.UI.Page
             return;
         }
 
+        // reset the wizard to begin in Step 1.
+        e.Cancel = true;
+        CheckOutWZ.ActiveStepIndex = 0;
+        BillingLV.SelectedIndex = -1;
+        ShippingLV.SelectedIndex = -1;
+        ShipMethodDDL.SelectedIndex = 0;
+
         cart.Clear();
         FinalMessageLBL.Text = "Thank you: " + UsernameLBL.Text + " for your order of " + ordertotal.ToString("c");
         Session.Add("Cart", new SortedList());
-        //Response.Redirect("~/Default.aspx");
+        //send this query string to PayPal
+        Response.Redirect(strPayPal);
     }
 }
